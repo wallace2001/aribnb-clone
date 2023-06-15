@@ -12,7 +12,19 @@ export const authOptions: AuthOptions = {
     providers: [
         GithubProvider({
             clientId: process.env.GITHUB_ID as string,
-            clientSecret: process.env.GITHUB_SECRET as string
+            clientSecret: process.env.GITHUB_SECRET as string,
+            profile(profile) {
+                console.log({profile});
+                return {
+                  id: profile.id.toString(),
+                  name: profile.name || profile.login,
+                  username: profile.login,
+                  email: profile.email,
+                  image: profile.avatar_url,
+                  createdAt: profile.created_at || profile.createdAt,
+                  updatedAt: profile.updated_at || profile.updatedAt
+                };
+              },
         }),
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID as string,

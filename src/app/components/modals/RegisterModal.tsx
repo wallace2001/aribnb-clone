@@ -7,6 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { signIn } from "next-auth/react";
 
 // Local
 import useRegisterModal from "@/app/hooks/useRegisterModel";
@@ -97,7 +98,7 @@ const RegisterModal = () => {
                 outline
                 label="Continue with Github"
                 icon={AiFillGithub}
-                onClick={() => { }}
+                onClick={() => signIn('github')}
             />
 
             <div className="
