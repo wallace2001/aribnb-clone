@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth/next";
 
 import { authOptions } from "../../../pages/api/auth/[...nextauth]";
 import prisma from "@/app/libs/prismadb";
-import { useSession } from "next-auth/react";
+import { SafeUser } from "../types";
 
 export async function getSession() {
     return await getServerSession(authOptions);
@@ -27,7 +27,7 @@ export default async function getCurrentUser() {
             ...currentUser,
             createdAt: currentUser.createdAt.toISOString(),
             updatedAt: currentUser.updatedAt.toISOString()
-        };
+        } as SafeUser;
     } catch(error: any) {
         return null;
     }
