@@ -9,12 +9,12 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import ListingCard from "../components/listings/ListingCard";
 
-interface TripsClientProps {
+interface ReservationsClientProps {
     reservations: SafeReservation[];
     currentUser?: SafeUser | null;
 }
 
-const TripsClient: React.FC<TripsClientProps> = ({
+const ReservationsClient: React.FC<ReservationsClientProps> = ({
     reservations,
     currentUser
 }) => {
@@ -39,8 +39,8 @@ const TripsClient: React.FC<TripsClientProps> = ({
     return (
         <Container>
             <Heading 
-                title="Trips"
-                subtitle="Where you've been and where you're going"
+                title="Reservations"
+                subtitle="Bookings on your properties"
             />
             <div className="
                 mt-10
@@ -61,7 +61,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
                         actionId={reservation.id}
                         onAction={onCancel}
                         disabled={deletingId === reservation.id}
-                        actionLabel="Cancel reservation"
+                        actionLabel="Cancel guest reservation"
                         currentUser={currentUser}
                     />
                 ))}
@@ -70,4 +70,4 @@ const TripsClient: React.FC<TripsClientProps> = ({
     );
 }
  
-export default TripsClient;
+export default ReservationsClient;
